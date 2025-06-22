@@ -5,7 +5,9 @@ import com.fbg.api.fix.enums.ExecutionType
 import com.fbg.api.fix.enums.OrderType
 import com.fbg.api.fix.enums.TimeInForce
 import com.fbg.api.fix.enums.TradingSide
+import com.fbg.api.fix.integration.executionTypeFromFix
 import com.fbg.api.fix.integration.toQuickfix
+import com.fbg.api.fix.integration.tradingSideFromQuickfix
 import quickfix.fix44.NewOrderSingle
 
 fun main() {
@@ -22,8 +24,8 @@ fun main() {
 
 
     // Converting from QuickFIX/J
-    val receivedSide = TradingSide.fromQuickfix(quickfixSide)
-    val receivedExecType = ExecutionType.fromFix('0') // NEW
+    val receivedSide = tradingSideFromQuickfix(quickfixSide)
+    val receivedExecType = executionTypeFromFix('0') // NEW
 
     // Using in your trading API
     data class OrderRequest(
