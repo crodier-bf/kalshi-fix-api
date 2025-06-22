@@ -1,11 +1,15 @@
 package com.fbg.api.fix.integration
 
 import com.fbg.api.fix.domain.BetFanaticsOrderState
-import quickfix.field.ExecType
-import quickfix.field.OrdStatus
+import com.fbg.api.fix.domain.ExecutionReport
 
 data class FbgExecutionReport(
-    val kalshiOrderId: String,
+
+    // the execution report which generated this problem
+    val executionReport: ExecutionReport,
+
+    // enriched with mapping back to fbg info
+    val fbgOrderId: String,
     val betStatus: BetFanaticsOrderState,
     val rejectionReason: String? = null,
 
