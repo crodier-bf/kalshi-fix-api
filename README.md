@@ -29,9 +29,10 @@ to add on the incoming Executions than we can 'stuff' in tag 11.
 
 #### Goals
 1. **Kotlin + Java + JS usable - as Types**
-   2. An API which can be used as types in Typescript.
-2. **Adapt** in two directions on FIX (QuickFixJ)
-   3. An API which can be used to convert to and from QuickFixJ and also the FIX spec itself.
+   1. An API which can be used as types in Typescript.
+   
+1. **Adapt** in two directions on FIX (QuickFixJ)
+   1. An API which can be used to convert to and from QuickFixJ and also the FIX spec itself.
 
 #### Implementation notes
 
