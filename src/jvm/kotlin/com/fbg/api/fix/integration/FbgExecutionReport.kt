@@ -6,10 +6,6 @@ import quickfix.field.OrdStatus
 
 data class FbgExecutionReport(
     val kalshiOrderId: String,
-    val fixOrderId: String,
-    val fixExecutionId: String,
-    val execType: ExecType,
-    val ordStatus: OrdStatus,
     val betStatus: BetFanaticsOrderState,
     val rejectionReason: String? = null,
 
