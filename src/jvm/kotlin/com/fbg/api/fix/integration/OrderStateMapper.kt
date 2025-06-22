@@ -1,12 +1,13 @@
-package com.fbg.api.fix.domain
+package com.fbg.api.fix.integration
 
+import com.fbg.api.fix.domain.BetFanaticsOrderState
 import com.fbg.api.fix.enums.ExecutionType
 
 // Clean mapper that only depends on core enums
 class OrderStateMapper {
     companion object {
         fun fromFix(execTypeChar: Char, ordStatusChar: Char): BetFanaticsOrderState? {
-            val execType = ExecutionType.fromFix(execTypeChar)
+            val execType = executionTypeFromFix(execTypeChar)
             // Add your mapping logic here
             return when (execType) {
                 ExecutionType.NEW -> BetFanaticsOrderState.NEW

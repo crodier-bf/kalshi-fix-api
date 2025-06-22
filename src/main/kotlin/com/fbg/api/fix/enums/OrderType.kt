@@ -12,9 +12,5 @@ enum class OrderType(val fixValue: Char) {
     ON_BASIS('9'),
     ON_CLOSE('A'),
     PEGGED('P'),
-    PREVIOUSLY_QUOTED('D');
-
-    companion object {
-        fun fromFix(fixValue: Char): OrderType? = entries.find { it.fixValue == fixValue }
-    }
+    PREVIOUSLY_QUOTED('D')
 }

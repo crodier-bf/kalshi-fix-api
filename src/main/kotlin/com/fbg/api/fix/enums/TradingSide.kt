@@ -9,10 +9,5 @@ enum class TradingSide(val fixValue: Char) {
     SELL_SHORT_EXEMPT('6'),
     CROSS('8'),
     CROSS_SHORT('9'),
-    CROSS_SHORT_EXEMPT('A');
-
-    companion object {
-        fun fromFix(fixValue: Char): TradingSide? = 
-            entries.find { it.fixValue == fixValue }
-    }
+    CROSS_SHORT_EXEMPT('A')
 }

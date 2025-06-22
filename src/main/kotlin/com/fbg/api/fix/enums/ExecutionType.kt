@@ -18,9 +18,5 @@ enum class ExecutionType(val fixValue: Char) {
     PENDING_REPLACE('E'),
     TRADE('F'),
     TRADE_CORRECT('G'),
-    TRADE_CANCEL('H');
-
-    companion object {
-        fun fromFix(fixValue: Char): ExecutionType? = entries.find { it.fixValue == fixValue }
-    }
+    TRADE_CANCEL('H')
 }

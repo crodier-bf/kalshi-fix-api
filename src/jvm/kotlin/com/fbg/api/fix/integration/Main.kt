@@ -1,12 +1,13 @@
 package com.fbg.fix
 
-import com.fbg.api.fix.domain.OrderStateMapper
+import com.fbg.api.fix.integration.OrderStateMapper
 import com.fbg.api.fix.enums.ExecutionType
 import com.fbg.api.fix.enums.OrderType
 import com.fbg.api.fix.enums.TimeInForce
 import com.fbg.api.fix.enums.TradingSide
-import com.fbg.api.fix.enums.fromQuickfix
-import com.fbg.api.fix.enums.toQuickfix
+import com.fbg.api.fix.integration.executionTypeFromQuickfix
+import com.fbg.api.fix.integration.toQuickfix
+import com.fbg.api.fix.integration.tradingSideFromQuickfix
 import quickfix.fix44.NewOrderSingle
 
 fun main() {
@@ -22,8 +23,8 @@ fun main() {
     val quickfixOrderType = orderType.toQuickfix()
 
     // Converting from QuickFIX/J
-    val receivedSide = TradingSide.fromQuickfix(quickfixSide)
-    val receivedExecType = ExecutionType.fromFix('0') // NEW
+    val receivedSide = tradingSideFromQuickfix(quickfixSide)
+    val receivedExecType = executionTypeFromQuickfix(quickfixExecType) // NEW
 
     // Using in your trading API
     data class OrderRequest(

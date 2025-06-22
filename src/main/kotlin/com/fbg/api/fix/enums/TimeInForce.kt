@@ -8,9 +8,5 @@ enum class TimeInForce(val fixValue: Char) {
     FILL_OR_KILL('4'),
     GOOD_TILL_CROSSING('5'),
     GOOD_TILL_DATE('6'),
-    AT_THE_CLOSE('7');
-
-    companion object {
-        fun fromFix(fixValue: Char): TimeInForce? = entries.find { it.fixValue == fixValue }
-    }
+    AT_THE_CLOSE('7')
 }
