@@ -1,10 +1,13 @@
-
 package com.fbg.api.fix.domain
 
 import com.fbg.api.fix.enums.*
-import java.math.BigDecimal
-import java.time.LocalDateTime
+import com.fbg.api.common.BetDecimal
+import com.fbg.api.common.BetLocalDateTime
 
+/**
+ * ExecutionReport using BetDecimal and BetLocalDateTime for multiplatform compatibility
+ * This allows compilation to both JVM and JS targets
+ */
 data class ExecutionReport(
     // Required Fields (FIX 5.0SP2)
     val orderID: String,                    // Tag 37 - Unique identifier for Order
@@ -12,45 +15,45 @@ data class ExecutionReport(
     val execType: ExecutionType,            // Tag 150 - Describes the purpose of the ExecutionReport
     val ordStatus: OrderStatus,             // Tag 39 - Current status of order
     val side: TradingSide,                  // Tag 54 - Side of order
-    val leavesQty: BigDecimal,              // Tag 151 - Quantity open for further execution
-    val cumQty: BigDecimal,                 // Tag 14 - Total quantity filled
+    val leavesQty: BetDecimal,              // Tag 151 - Quantity open for further execution
+    val cumQty: BetDecimal,                 // Tag 14 - Total quantity filled
     
     // Conditional Required Fields
     val instrument: Instrument,             // Component - Instrument identification
-    val lastQty: BigDecimal? = null,        // Tag 32 - Quantity of shares bought/sold (required if LastPx is provided)
-    val lastPx: BigDecimal? = null,         // Tag 31 - Price of this execution (required if LastQty is provided)
+    val lastQty: BetDecimal? = null,        // Tag 32 - Quantity of shares bought/sold
+    val lastPx: BetDecimal? = null,         // Tag 31 - Price of this execution
     
     // Optional Common Fields
     val clOrdID: String? = null,            // Tag 11 - Client Order ID
     val origClOrdID: String? = null,        // Tag 41 - Original Client Order ID
     val execRefID: String? = null,          // Tag 19 - Reference identifier for execution
     val execTransType: ExecTransType? = null, // Tag 20 - Transaction type
-    val orderQty: BigDecimal? = null,       // Tag 38 - Quantity ordered
+    val orderQty: BetDecimal? = null,       // Tag 38 - Quantity ordered
     val ordType: OrderType? = null,         // Tag 40 - Order type
-    val price: BigDecimal? = null,          // Tag 44 - Price per unit of quantity
-    val stopPx: BigDecimal? = null,         // Tag 99 - Stop price
+    val price: BetDecimal? = null,          // Tag 44 - Price per unit of quantity
+    val stopPx: BetDecimal? = null,         // Tag 99 - Stop price
     val timeInForce: TimeInForce? = null,   // Tag 59 - Specifies how long the order remains in effect
-    val avgPx: BigDecimal? = null,          // Tag 6 - Calculated average price of all fills
+    val avgPx: BetDecimal? = null,          // Tag 6 - Calculated average price of all fills
     val ordRejReason: String? = null,       // Tag 103 - Reason order was rejected
     val text: String? = null,               // Tag 58 - Free format text string
-    val transactTime: LocalDateTime? = null, // Tag 60 - Time of execution/order creation
+    val transactTime: BetLocalDateTime? = null, // Tag 60 - Time of execution/order creation
     val settlDate: String? = null,          // Tag 64 - Settlement date (YYYYMMDD)
     val tradeDate: String? = null,          // Tag 75 - Trade date (YYYYMMDD)
     
     // Commission and Settlement Fields
-    val commission: BigDecimal? = null,     // Tag 12 - Commission charged
+    val commission: BetDecimal? = null,     // Tag 12 - Commission charged
     val commType: CommissionType? = null,   // Tag 13 - Commission type
     val commCurrency: String? = null,       // Tag 479 - Commission currency
     val fundRenewWaiv: String? = null,      // Tag 497 - Fund renewal waiver
-    val grossTradeAmt: BigDecimal? = null,  // Tag 381 - Total amount traded
-    val netMoney: BigDecimal? = null,       // Tag 118 - Net money
+    val grossTradeAmt: BetDecimal? = null,  // Tag 381 - Total amount traded
+    val netMoney: BetDecimal? = null,       // Tag 118 - Net money
     val settlCurrency: String? = null,      // Tag 120 - Currency used for settlement
-    val settlCurrAmt: BigDecimal? = null,   // Tag 119 - Amount of settlement currency
-    val settlCurrFxRate: BigDecimal? = null, // Tag 155 - Settlement currency FX rate
+    val settlCurrAmt: BetDecimal? = null,   // Tag 119 - Amount of settlement currency
+    val settlCurrFxRate: BetDecimal? = null, // Tag 155 - Settlement currency FX rate
     
     // Market Data and Execution Details
-    val lastSpotRate: BigDecimal? = null,   // Tag 194 - Last spot rate
-    val lastForwardPoints: BigDecimal? = null, // Tag 195 - Last forward points
+    val lastSpotRate: String? = null,       // Tag 194 - Last spot rate
+    val lastForwardPoints: String? = null,  // Tag 195 - Last forward points
     val lastMkt: String? = null,            // Tag 30 - Market of execution
     val tradingSessionID: String? = null,   // Tag 336 - Trading session identifier
     val tradingSessionSubID: String? = null, // Tag 625 - Trading session sub-identifier
@@ -60,8 +63,8 @@ data class ExecutionReport(
     
     // Timing Fields
     val orderExpireDate: String? = null,    // Tag 432 - Order expiration date (YYYYMMDD)
-    val expireTime: LocalDateTime? = null,  // Tag 126 - Time/Date of order expiration
-    val effectiveTime: LocalDateTime? = null, // Tag 168 - Effective time
+    val expireTime: BetLocalDateTime? = null,  // Tag 126 - Time/Date of order expiration
+    val effectiveTime: BetLocalDateTime? = null, // Tag 168 - Effective time
     val maturityDate: String? = null,       // Tag 541 - Instrument maturity date
     
     // Account and Party Information
@@ -78,18 +81,18 @@ data class ExecutionReport(
     // Execution Instructions and Handling
     val execInst: String? = null,           // Tag 18 - Instructions for order handling
     val handlInst: String? = null,          // Tag 21 - Handling instructions
-    val minQty: BigDecimal? = null,         // Tag 110 - Minimum quantity
-    val maxFloor: BigDecimal? = null,       // Tag 111 - Maximum floor quantity
-    val displayQty: BigDecimal? = null,     // Tag 1138 - Display quantity
-    val refreshQty: BigDecimal? = null,     // Tag 1088 - Refresh quantity
+    val minQty: BetDecimal? = null,         // Tag 110 - Minimum quantity
+    val maxFloor: BetDecimal? = null,       // Tag 111 - Maximum floor quantity
+    val displayQty: BetDecimal? = null,     // Tag 1138 - Display quantity
+    val refreshQty: BetDecimal? = null,     // Tag 1088 - Refresh quantity
     
     // Regulatory and Compliance
     val complianceID: String? = null,       // Tag 376 - Compliance ID
     val solicitedFlag: Boolean? = null,     // Tag 377 - Solicited flag
     val execPriceType: String? = null,      // Tag 484 - Execution price type
-    val execPriceAdjustment: BigDecimal? = null, // Tag 485 - Execution price adjustment
+    val execPriceAdjustment: BetDecimal? = null, // Tag 485 - Execution price adjustment
     val priorityIndicator: String? = null,  // Tag 638 - Priority indicator
-    val priceImprovement: BigDecimal? = null, // Tag 639 - Price improvement
+    val priceImprovement: BetDecimal? = null, // Tag 639 - Price improvement
     
     // Additional FIX 5.0 Fields
     val secondaryOrderID: String? = null,   // Tag 198 - Secondary order ID  
@@ -102,4 +105,3 @@ data class ExecutionReport(
     // Extensibility
     val metadata: Map<String, Any> = emptyMap()
 )
-
