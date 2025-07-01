@@ -16,5 +16,7 @@ enum class OrderStatus(val fixValue: Char) {
     CALCULATED('B'),
     EXPIRED('C'),
     ACCEPTED_FOR_BIDDING('D'),
-    PENDING_REPLACE('E')
+    PENDING_REPLACE('E'),
+    // our own status
+    UNSENT('Z')
 }
